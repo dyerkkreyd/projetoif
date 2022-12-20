@@ -1,10 +1,28 @@
 package projetoif.pi.projeto.models;
 
-public class Projeto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Projeto {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nome;
 	private String servico;
 	private String data;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	private String horario;
 
 	public String getNome() {
@@ -38,7 +56,5 @@ public class Projeto {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
-	
 
 }
