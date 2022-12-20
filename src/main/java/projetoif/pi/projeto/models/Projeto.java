@@ -7,12 +7,19 @@ import javax.persistence.Id;
 
 @Entity
 public class Projeto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String servico;
+
+	@Override
+	public String toString() {
+		return "Projeto [id=" + id + ", nome=" + nome + ", servico=" + servico + ", data=" + data + ", horario="
+				+ horario + "]";
+	}
+
 	private String data;
 
 	public Long getId() {
