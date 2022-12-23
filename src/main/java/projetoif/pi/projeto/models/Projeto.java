@@ -13,6 +13,8 @@ public class Projeto {
 	private Long id;
 	private String nome;
 	private String servico;
+	private String data;
+	private String horario;
 
 
 	@Override
@@ -21,7 +23,7 @@ public class Projeto {
 				+ horario + "]";
 	}
 
-	private String data;
+	
 
 	public Long getId() {
 		return id;
@@ -31,7 +33,6 @@ public class Projeto {
 		this.id = id;
 	}
 
-	private String horario;
 
 	public String getNome() {
 		return nome;
