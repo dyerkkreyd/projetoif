@@ -13,10 +13,10 @@ public class ProjetosController {
 	
 	@Autowired
 	private ProjetoRepository pr;
-
+	
 	@RequestMapping("/projeto/form")
 	public String form() {
-		return "formProjeto";
+		return "projetos/formProjeto";
 	}
 	
 	@PostMapping("/projeto")
@@ -25,6 +25,6 @@ public class ProjetosController {
 		System.out.println(projeto);
 		pr.save(projeto);
 		
-		return "consulta-adicionada";
+		return "projetos/consulta-adicionada";
 	}
 }
