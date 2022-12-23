@@ -14,6 +14,7 @@ public class Projeto {
 	private String nome;
 	private String servico;
 
+
 	@Override
 	public String toString() {
 		return "Projeto [id=" + id + ", nome=" + nome + ", servico=" + servico + ", data=" + data + ", horario="
