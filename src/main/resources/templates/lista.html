@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Clínica Odontológica</title>
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper cyan">
+			<a href="/projeto" class="brand-logo center">Lista de Consultas</a>
+			<a href="/" class="brand-logo">Clínica 3 Irmãos</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+			</ul>
+		</div>
+	</nav>
+	
+	<div>
+		<table>
+		
+		<thead>
+		<tr>
+		 	<th>Id</th>
+		 	<th>Nome</th>
+		 	<th>Serviço</th>
+		 	<th>Data</th>
+		 	<th>Horário</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="p : ${projetos}">
+				<td th:text="${p.id}">1</td>
+				<td th:text="${p.nome}">Fernando</td>
+				<td th:text="${p.servico}">Extração</td>
+				<td th:text="${p.data}">26/12/2022</td>
+				<td th:text="${p.horario}">16:00</td>
+			</tr>
+			
+		</tbody>
+		
+		</table>
+	
+	</div>
+	
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+</body>
+</html>
