@@ -1,6 +1,7 @@
 package projetoif.pi.projeto.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 import projetoif.pi.projeto.models.Projeto;
 import projetoif.pi.projeto.repositories.ProjetoRepository;
 
@@ -22,7 +22,7 @@ public class ProjetosController {
 	
 	@RequestMapping("/projeto/form")
 	public String form() {
-		return "projetos/formProjeto";
+		return "formProjeto";
 	}
 	
 	@PostMapping("/projeto")
@@ -30,7 +30,7 @@ public class ProjetosController {
 		
 		System.out.println(projeto);
 		pr.save(projeto);
-		return "projetos/consulta-adicionada";
+		return "consulta-adicionada";
 	}
 	
 	@GetMapping("/projeto")
@@ -44,18 +44,17 @@ public class ProjetosController {
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
-		java.util.Optional<Projeto> opt = pr.findById(id);
-		
-		if(opt.isEmpty()) {
-			md.setViewName("redirect:/projetos");	
-			return md; 
+		Optional<Projeto> opt = pr.findById(id);
+
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/projeto");
+			return md;
 		}
-		
-		md.setViewName("eventos/detalhes");
+		md.setViewName("projeto/detalhes");
 		Projeto projeto = opt.get();
 		md.addObject("projeto", projeto);
-		
-		return md; 
+
+		return md;
 	}
 	
 }

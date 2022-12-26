@@ -31,9 +31,9 @@
 		</thead>
 		
 		<tbody>
-			<tr th:each="p : ${projetos}">
+			<tr th:each="p : ${projeto}">
 				<td th:text="${p.id}">1</td>
-				<td th:text="${p.nome}">Fernando</td>
+				<td><a th:href="@{/projeto/{id}(id=${e.id})}"><span th:text="${p.nome}">Fernando</span></a></td>
 				<td th:text="${p.servico}">Extração</td>
 				<td th:text="${p.data}">26/12/2022</td>
 				<td th:text="${p.horario}">16:00</td>
