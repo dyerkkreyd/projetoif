@@ -27,7 +27,7 @@ public class ProjetosController {
 	
 	@RequestMapping("/form")
 	public String form() {
-		return "projetos/formProjeto";
+		return "formProjeto";
 	}
 	
 	@PostMapping
@@ -35,7 +35,11 @@ public class ProjetosController {
 		
 		System.out.println(projeto);
 		pr.save(projeto);
+<<<<<<< HEAD
 		return "projetos/consulta-adicionada";
+=======
+		return "consulta-adicionada";
+>>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
 	}
 	
 	@GetMapping
@@ -44,6 +48,25 @@ public class ProjetosController {
 		ModelAndView mv = new ModelAndView("projetos/lista");
 		mv.addObject("projetos", projetos);
 		return mv; 
+<<<<<<< HEAD
+=======
+	}
+	
+	@GetMapping("/{id}")
+	public ModelAndView detalhar(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Projeto> opt = pr.findById(id);
+
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/projeto");
+			return md;
+		}
+		md.setViewName("projeto/detalhes");
+		Projeto projeto = opt.get();
+		md.addObject("projeto", projeto);
+
+		return md;
+>>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
 	}
 	
 	@GetMapping("/{id}")
