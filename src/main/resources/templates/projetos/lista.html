@@ -18,8 +18,7 @@
 	</nav>
 
 	<div>
-		<table>
-
+		<table class="highlight">
 			<thead>
 				<tr>
 					<th class="um">Id</th>
@@ -33,7 +32,8 @@
 			<tbody>
 				<tr th:each="p : ${projetos}">
 					<td class="one" th:text="${p.id}">1</td>
-					<td class="two" th:text="${p.nome}">Fernando</td>
+					<td><a th:href="@{/projetos/{id}(id=${p.id})}"><span
+							th:text="${e.nome}">Fernando</span></a></td>
 					<td class="three" th:text="${p.servico}">Extração</td>
 					<td class="for" th:text="${p.data}">26/12/2022</td>
 					<td class="five" th:text="${p.horario}">16:00</td>
@@ -42,11 +42,9 @@
 			</tbody>
 
 		</table>
-
-	</div>
-
-
-	<script type="text/javascript"
+		</div>
+		
+		<script type="text/javascript"
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
@@ -90,11 +88,10 @@
 				</div>
 			</div>
 		</div>
+</footer>
 
+<style>
 
-
-	</footer>
-	<style>
 .titulodois {
 	text-align: center;
 }
@@ -149,3 +146,5 @@ font-family: monospace;
 </style>
 </body>
 </html>
+		
+		
