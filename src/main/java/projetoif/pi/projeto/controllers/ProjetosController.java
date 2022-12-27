@@ -11,34 +11,62 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import projetoif.pi.projeto.models.Paciente;
 import projetoif.pi.projeto.models.Projeto;
+import projetoif.pi.projeto.repositories.PacienteRepository;
 import projetoif.pi.projeto.repositories.ProjetoRepository;
 
 @Controller
+@RequestMapping("/projetos")
 public class ProjetosController {
 	
 	@Autowired
 	private ProjetoRepository pr;
+	@Autowired
+	private PacienteRepository pcr; 
 	
-	@RequestMapping("/projeto/form")
+	@RequestMapping("/form")
 	public String form() {
 		return "formProjeto";
 	}
 	
-	@PostMapping("/projeto")
+	@PostMapping
 	public String adicionar(Projeto projeto) {
 		
 		System.out.println(projeto);
 		pr.save(projeto);
+<<<<<<< HEAD
+		return "projetos/consulta-adicionada";
+=======
 		return "consulta-adicionada";
+>>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
 	}
 	
-	@GetMapping("/projeto")
+	@GetMapping
 	public ModelAndView listar() {
 		List<Projeto> projetos = pr.findAll();
-		ModelAndView mv = new ModelAndView("lista");
+		ModelAndView mv = new ModelAndView("projetos/lista");
 		mv.addObject("projetos", projetos);
 		return mv; 
+<<<<<<< HEAD
+=======
+	}
+	
+	@GetMapping("/{id}")
+	public ModelAndView detalhar(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Projeto> opt = pr.findById(id);
+
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/projeto");
+			return md;
+		}
+		md.setViewName("projeto/detalhes");
+		Projeto projeto = opt.get();
+		md.addObject("projeto", projeto);
+
+		return md;
+>>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
 	}
 	
 	@GetMapping("/{id}")
@@ -56,5 +84,21 @@ public class ProjetosController {
 
 		return md;
 	}
-	
+	@PostMapping("/{idConsulta}")
+	public String salvarPaciente(@PathVariable Long idConsulta, Paciente paciente) {
+		
+		
+		Optional<Projeto> opt = pr.findById(idConsulta);
+		if(opt.isEmpty()) {
+			return "redirect:/projeto";
+		}
+		
+		Projeto projeto = opt.get();
+		paciente.setProjeto(projeto);
+		
+		pcr.save(paciente);
+		
+		return "redirect:/projeto/{idConsulta}";
+		
+	}
 }
