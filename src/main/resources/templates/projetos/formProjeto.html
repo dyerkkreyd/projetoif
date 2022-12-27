@@ -10,18 +10,14 @@
 <body>
 	<nav>
 		<div class="nav-wrapper cyan">
-			<a href="/projetos/form" class="brand-logo center">Adicionar Consulta</a> 
-			<a href="/" class="brand-logo">Clínica 3 Irmãos</a>
+			<a href="/projetos/form" class="brand-logo center">Adicionar
+				Consulta</a> <a href="/" class="brand-logo">Clínica 3 Irmãos</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 			</ul>
 		</div>
 	</nav>
-	<form action="/projeto" method="post"></form>
-	<div class="row">
-		<form class="col s12">
-
-
-
+	<form action="/projetos" method="post" class="col s12">
+		<div class="row">
 			<div class="row">
 				<div class="input-field col s12">
 					<input type="text" name="nome" class="validate"> <label
@@ -30,41 +26,40 @@
 						nome completo</span>
 				</div>
 			</div>
-
-			<div class="row">
-				<div class="input-field col s12">
-					<input type="text" name="servico" class="validate"> <label
-						for="servico">Serviço</label> <span class="helper-text"
-						data-error="Inválido" data-success="Correto">Insira o
-						serviço que deseja. ex: Manutenção, Extração, Limpeza</span>
-				</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<input type="text" name="servico" class="validate"> <label
+					for="servico">Serviço</label> <span class="helper-text"
+					data-error="Inválido" data-success="Correto">Insira o
+					serviço que deseja. ex: Manutenção, Extração, Limpeza</span>
 			</div>
-			<div class="row">
-				<div class="input-field col s12">
-					<input type="date" name="data" class="validate"> <label
-						for="data">Data</label> <span class="helper-text"
-						data-error="Inválido" data-success="Correto">Insira a data
-						que você deseja realizar seu serviço.</span>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="input-field col s12">
-					<input type="text" name="horario" class="validate"> <label
-						for="horario">Horário</label> <span class="helper-text"
-						data-error="Inválido" data-success="Correto">Insira o
-						horário que você deseja realizar seu serviço.</span>
-				</div>
-
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<input type="date" name="data" class="validate"> <label
+					for="data">Data</label> <span class="helper-text"
+					data-error="Inválido" data-success="Correto">Insira a data
+					que você deseja realizar seu serviço.</span>
 			</div>
 
-			<div>
-				<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
-				<button class="btn waves-effect waves-light" type="reset">Limpar</button>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<input type="text" name="horario" class="validate"> <label
+					for="horario">Horário</label> <span class="helper-text"
+					data-error="Inválido" data-success="Correto">Insira o
+					horário que você deseja realizar seu serviço.</span>
 			</div>
 
-		</form>
-	</div>
+		</div>
+
+		<div>
+			<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
+			<button class="btn waves-effect waves-light" type="reset">Limpar</button>
+		</div>
+
+	</form>
 
 
 	<script type="text/javascript"

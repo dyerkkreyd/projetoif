@@ -27,7 +27,7 @@ public class ProjetosController {
 	
 	@RequestMapping("/form")
 	public String form() {
-		return "formProjeto";
+		return "projetos/formProjeto";
 	}
 	
 	@PostMapping
@@ -35,11 +35,9 @@ public class ProjetosController {
 		
 		System.out.println(projeto);
 		pr.save(projeto);
-<<<<<<< HEAD
-		return "projetos/consulta-adicionada";
-=======
-		return "consulta-adicionada";
->>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
+
+		return "redirect:/projetos";
+
 	}
 	
 	@GetMapping
@@ -48,42 +46,25 @@ public class ProjetosController {
 		ModelAndView mv = new ModelAndView("projetos/lista");
 		mv.addObject("projetos", projetos);
 		return mv; 
-<<<<<<< HEAD
-=======
+
 	}
 	
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
 		Optional<Projeto> opt = pr.findById(id);
-
+		
 		if (opt.isEmpty()) {
 			md.setViewName("redirect:/projeto");
 			return md;
 		}
-		md.setViewName("projeto/detalhes");
+		md.setViewName("projetos/detalhes");
 		Projeto projeto = opt.get();
 		md.addObject("projeto", projeto);
 
 		return md;
->>>>>>> 08a9fc58ba06114f80cef35e60c69a0d81d5f327
 	}
 	
-	@GetMapping("/{id}")
-	public ModelAndView detalhar(@PathVariable Long id) {
-		ModelAndView md = new ModelAndView();
-		Optional<Projeto> opt = pr.findById(id);
-
-		if (opt.isEmpty()) {
-			md.setViewName("redirect:/projeto");
-			return md;
-		}
-		md.setViewName("projeto/detalhes");
-		Projeto projeto = opt.get();
-		md.addObject("projeto", projeto);
-
-		return md;
-	}
 	@PostMapping("/{idConsulta}")
 	public String salvarPaciente(@PathVariable Long idConsulta, Paciente paciente) {
 		
