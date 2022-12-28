@@ -19,46 +19,53 @@
 	<form action="/projetos" method="post" class="col s12">
 		<div class="row">
 			<div class="row">
+
+				<input type="hidden" name="id" class="validate"th:value="${projeto.id}" readonly="readonly">
+
 				<div class="input-field col s12">
-					<input type="text" name="nome" class="validate"> <label
-						for="nome">Nome</label> <span class="helper-text"
-						data-error="Inválido" data-success="Correto">Insira o seu
-						nome completo</span>
+
+					<div class="input-field col s12">
+						<input type="text" name="nome" class="validate"
+							th:value="${projeto.nome}"> <label for="nome">Nome</label>
+						<span class="helper-text" data-error="Inválido"
+							data-success="Correto">Insira o seu nome completo</span>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="input-field col s12">
-				<input type="text" name="servico" class="validate"> <label
-					for="servico">Serviço</label> <span class="helper-text"
-					data-error="Inválido" data-success="Correto">Insira o
-					serviço que deseja. ex: Manutenção, Extração, Limpeza</span>
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="text" name="servico" class="validate"
+						th:value="${projeto.servico}"> <label for="servico">Serviço</label>
+					<span class="helper-text" data-error="Inválido"
+						data-success="Correto">Insira o serviço que deseja. ex:
+						Manutenção, Extração, Limpeza</span>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="input-field col s12">
-				<input type="date" name="data" class="validate"> <label
-					for="data">Data</label> <span class="helper-text"
-					data-error="Inválido" data-success="Correto">Insira a data
-					que você deseja realizar seu serviço.</span>
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="date" name="data" class="validate"
+						th:value="${projeto.data}"> <label for="data">Data</label>
+					<span class="helper-text" data-error="Inválido"
+						data-success="Correto">Insira a data que você deseja
+						realizar seu serviço.</span>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input type="text" name="horario" class="validate"
+						th:value="${projeto.horario}"> <label for="horario">Horário</label>
+					<span class="helper-text" data-error="Inválido"
+						data-success="Correto">Insira o horário que você deseja
+						realizar seu serviço</span>
+				</div>
+
 			</div>
 
-		</div>
-		<div class="row">
-			<div class="input-field col s12">
-				<input type="text" name="horario" class="validate"> <label
-					for="horario">Horário</label> <span class="helper-text"
-					data-error="Inválido" data-success="Correto">Insira o
-					horário que você deseja realizar seu serviço.</span>
+			<div>
+				<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
+				<button class="btn waves-effect waves-light" type="reset">Limpar</button>
 			</div>
-
-		</div>
-
-		<div>
-			<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
-			<button class="btn waves-effect waves-light" type="reset">Limpar</button>
-		</div>
-
 	</form>
 
 

@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <title>Clínica Odontológica</title>
 </head>
 <body>
@@ -33,21 +34,27 @@
 
 			<tbody>
 				<tr th:each="p : ${projetos}">
-					<td class="one" th:text="${p.id}">1</td>
+					<td th:text="${p.id}">1</td>
 					<td><a th:href="@{/projetos/{id}(id=${p.id})}"><span
 							th:text="${p.nome}">Fernando</span></a></td>
 					<td class="three" th:text="${p.servico}">Extração</td>
 					<td class="for" th:text="${p.data}">26/12/2022</td>
 					<td class="five" th:text="${p.horario}">16:00</td>
+					<td><a th:href="@{/projetos/{id}/selecionar(id=${p.id})}"><i
+							class="material-icons">assignment</i></a> <a
+						th:href="@{/projetos/{id}/remover(id=${p.id})}"> <i
+							class="material-icons">delete</i></a></td>
 				</tr>
 
 			</tbody>
 
 		</table>
-		</div>
-		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	</div>
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 
 	<footer class="page-footer orange">
 		<div class="container">
@@ -88,10 +95,9 @@
 				</div>
 			</div>
 		</div>
-</footer>
+	</footer>
 
-<style>
-
+	<style>
 .titulodois {
 	text-align: center;
 }
@@ -140,11 +146,11 @@
 .five {
 	font-family: Times New Roman;
 }
-.brand-logo{
-font-family: monospace;
+
+.brand-logo {
+	font-family: monospace;
 }
 </style>
 </body>
 </html>
-		
-		
+

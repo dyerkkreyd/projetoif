@@ -19,41 +19,41 @@ import projetoif.pi.projeto.repositories.ProjetoRepository;
 @Controller
 @RequestMapping("/projetos")
 public class ProjetosController {
-	
+
 	@Autowired
 	private ProjetoRepository pr;
 	@Autowired
-	private PacienteRepository pcr; 
-	
+	private PacienteRepository pcr;
+
 	@RequestMapping("/form")
 	public String form() {
 		return "projetos/formProjeto";
 	}
-	
+
 	@PostMapping
 	public String adicionar(Projeto projeto) {
-		
+
 		System.out.println(projeto);
 		pr.save(projeto);
 
 		return "redirect:/projetos";
 
 	}
-	
+
 	@GetMapping
 	public ModelAndView listar() {
 		List<Projeto> projetos = pr.findAll();
 		ModelAndView mv = new ModelAndView("projetos/lista");
 		mv.addObject("projetos", projetos);
-		return mv; 
+		return mv;
 
 	}
-	
+
 	@GetMapping("/{id}")
 	public ModelAndView detalhar(@PathVariable Long id) {
 		ModelAndView md = new ModelAndView();
 		Optional<Projeto> opt = pr.findById(id);
-		
+
 		if (opt.isEmpty()) {
 			md.setViewName("redirect:/projeto");
 			return md;
@@ -64,22 +64,45 @@ public class ProjetosController {
 
 		return md;
 	}
-	
+
 	@PostMapping("/{idConsulta}")
 	public String salvarPaciente(@PathVariable Long idConsulta, Paciente paciente) {
-		
-		
+
 		Optional<Projeto> opt = pr.findById(idConsulta);
-		if(opt.isEmpty()) {
+		if (opt.isEmpty()) {
 			return "redirect:/projeto";
 		}
-		
+
 		Projeto projeto = opt.get();
 		paciente.setProjeto(projeto);
-		
+
 		pcr.save(paciente);
-		
+
 		return "redirect:/projeto/{idConsulta}";
-		
+
+	}
+
+	@GetMapping("/{id}/selecionar")
+	public ModelAndView selecionarConsulta(@PathVariable Long id) {
+		ModelAndView md = new ModelAndView();
+		Optional<Projeto> opt = pr.findById(id);
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/projetos");
+			return md;
+		}
+		Projeto projeto = opt.get();
+		md.setViewName("projetos/formProjeto");
+		md.addObject("projeto", projeto);
+		return md;
+	}
+
+	@GetMapping("/{id}/remover")
+	public String apagarconsulta(@PathVariable Long id) {
+		Optional<Projeto> opt = pr.findById(id);
+		if (!opt.isEmpty()) {
+			Projeto projeto = opt.get();
+			pr.delete(projeto);
+		}
+		return "redirect:/projetos";
 	}
 }
