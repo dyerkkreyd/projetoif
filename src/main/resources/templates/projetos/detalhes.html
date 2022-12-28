@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Clínica Odontológica</title>
 </head>
 <body>
@@ -87,10 +87,11 @@
 								<td th:text="${c.nome}">1</td>
 								<td th:text="${c.cpf}">1</td>
 								<td><a
-									th:href=@{/projetos/{idProjeto}/pacientes/{idPaciente}/selecionar(idProjeto=${projeto.id},idPaciente=${c.id})}><i
-										class="material-icons">assignment</i></a> <a
-									th:href=@{/projetos/{idProjeto}/pacientes/{idPaciente}/remover(idProjeto=${projeto.id},idPaciente=${c.id})}><i
-										class="material-icons">delete</i></a></td>
+									th:href="@{/projetos/{idProjeto}/pacientes/{idPaciente}/selecionar(idProjeto=${projeto.id},idPaciente=${c.id})}"><i
+										class="material-icons">assignment</i></a> 
+									<a
+									th:href="@{/projetos/{idProjeto}/pacientes/{idPaciente}/remover(idProjeto=${projeto.id},idPaciente=${c.id})}"><i
+										class="material-icons">delete</i></a> 	
 							</tr>
 						</tbody>
 					</table>
