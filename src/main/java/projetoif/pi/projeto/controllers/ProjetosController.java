@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -129,6 +130,22 @@ public class ProjetosController {
 			return md;
 		}
 		return md;
+	}
+	@GetMapping("/{idConsulta}/pacientes/{idPaciente}/remover")
+	public String removerPaciente(@PathVariable Long idConsulta, Long idPaciente, Paciente paciente) {
+		System.out.println("ID do Paciente" + idPaciente);
+		System.out.println(paciente);
+		Optional<Projeto> opt = pr.findById(idPaciente);
+		if(opt.isEmpty()) {
+			return "redirect:/projetos";
+			}
+		Projeto projeto = opt.get();
+		paciente.setProjeto(projeto);
+		
+		pcr.delete(paciente);
+		return "redirect:/projetos";
+		
+		
 	}
 }
 
