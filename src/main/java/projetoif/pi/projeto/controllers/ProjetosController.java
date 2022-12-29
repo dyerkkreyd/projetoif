@@ -132,7 +132,7 @@ public class ProjetosController {
 		return md;
 	}
 	@GetMapping("/{idConsulta}/pacientes/{idPaciente}/remover")
-	public String removerPaciente(@PathVariable Long idConsulta, Long idPaciente, Paciente paciente) {
+	public String removerPaciente(@PathVariable Long idConsulta,@PathVariable Long idPaciente, Paciente paciente) {
 		System.out.println("ID do Paciente" + idPaciente);
 		System.out.println(paciente);
 		Optional<Projeto> opt = pr.findById(idPaciente);
