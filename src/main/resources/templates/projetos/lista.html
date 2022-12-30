@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 <title>Clínica Odontológica</title>
 </head>
@@ -35,8 +37,9 @@
 			<tbody>
 				<tr th:each="p : ${projetos}">
 					<td th:text="${p.id}">1</td>
-					<td><a th:href="@{/projetos/{id}(id=${p.id})}"><span
-							th:text="${p.nome}">Fernando</span></a></td>
+					<td> <b>
+					<a class="nome" th:href="@{/projetos/{id}(id=${p.id})}"><span
+							th:text="${p.nome}">Fernando</span></a> </b></td>
 					<td class="three" th:text="${p.servico}">Extração</td>
 					<td class="for" th:text="${p.data}">26/12/2022</td>
 					<td class="five" th:text="${p.horario}">16:00</td>
@@ -149,6 +152,12 @@
 
 .brand-logo {
 	font-family: monospace;
+}
+
+.nome {
+	font-family: garamond;
+	text-decoration: underline;
+	font-size: large;
 }
 </style>
 </body>

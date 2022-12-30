@@ -141,7 +141,7 @@ public class ProjetosController {
 			}
 		Projeto projeto = opt.get();
 		paciente.setProjeto(projeto);
-		
+				
 		pcr.delete(paciente);
 		return "redirect:/projetos";
 		
