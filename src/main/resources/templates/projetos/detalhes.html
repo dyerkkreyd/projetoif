@@ -33,6 +33,9 @@
 							<label>CPF: </label> <input type="text" name="cpf" th:value="${paciente.cpf}">
 						</div>
 						<div>
+							<label>Hórario: </label> <input type="text" name="hora" th:value="${paciente.hora}">
+						</div>
+						<div>
 							<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
 							<button class="btn waves-effect waves-light" type="reset">Limpar</button>
 						</div>
@@ -59,9 +62,7 @@
 					<p>
 						<strong>Data: </strong><span th:text="${projeto.data}">1</span>
 					</p>
-					<p>
-						<strong>Horário: </strong><span th:text="${projeto.horario}">1</span>
-					</p>
+					
 				</div>
 			</div>
 		</div>
@@ -78,7 +79,9 @@
 								<th>Id</th>
 								<th>Nome</th>
 								<th>Cpf</th>
+								<th>Horário</th>
 								<th></th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -86,6 +89,7 @@
 								<td th:text="${c.id}">1</td>
 								<td th:text="${c.nome}">1</td>
 								<td th:text="${c.cpf}">1</td>
+									<td th:text="${c.hora}">1</td>
 								<td><a
 									th:href="@{/projetos/{idProjeto}/pacientes/{idPaciente}/selecionar(idProjeto=${projeto.id},idPaciente=${c.id})}"><i
 										class="material-icons">assignment</i></a> 
