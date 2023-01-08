@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<title>Clínica Odontológica</title>
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper cyan">
+			<a href="/projetos" class="brand-logo center">Lista de Consultas</a>
+			<a href="/" class="brand-logo">Clínica 3 Irmãos</a>
+			<ul id="nav-mobile" class="left hide-on-med-and-down">
+			</ul>
+		</div>
+	</nav>
+
+	<div>
+
+		<table class="highlight">
+
+			<thead>
+				<tr>
+					<th class="um">Consulta</th>
+					<th class="dois">Dia da semana</th>
+					<th class="tres">Serviço</th>
+					<th class="quatro">Data</th>
+					<th class="cinco">Horário</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="p : ${projetos}">
+					<td th:text="${p.id}">1</td>
+					<td> <b>
+					<a class="nome" th:href="@{/projetos/{id}(id=${p.id})}"><span
+							th:text="${p.nome}">Fernando</span></a> </b></td>
+					<td class="three" th:text="${p.servico}">Extração</td>
+					<td class="for" th:text="${p.data}">26/12/2022</td>
+					<td class="five" th:text="${p.horario}">16:00</td>
+					<td><a th:href="@{/projetos/{id}/selecionar(id=${p.id})}"><i
+							class="material-icons">assignment</i></a> <a
+						th:href="@{/projetos/{id}/remover(id=${p.id})}"> <i
+							class="material-icons">delete</i></a></td>
+				</tr>
+
+			</tbody>
+
+		</table>
+	</div>
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+	<footer class="page-footer orange">
+		<div class="container">
+			<div class="row">
+				<div class="col 16 s12">
+					<h5 class="titulodois">Entre em contato com nossos
+						Programadores</h5>
+					<p class="center">Nossos desenvolvedores quebraram a cabeça
+						centenas de vezes para tentar entregar o mínimo de erros
+						possíveis, a seguir está diversas informações de como entrar em
+						contato com eles.</p>
+				</div>
+				<div class="col 13 s12">
+					<h5 class="center">Desenvolvedores</h5>
+
+					<div class="ctn">
+						<ul>
+							<li><a class="white-text"> Adryel Assunção Ramalho Leite
+									<br> assuncaoadryel@gmail.com <br> +55 (84)
+									99828-2952
+							</a>
+						</ul>
+						<ul>
+							<li><a class="white-text"> Fernando Victor Araújo
+									Rodrigues Da Silva <br> fernandovictor118@gmail.com <br>
+									+55 (84) 99675-6709
+							</a>
+						</ul>
+						<ul>
+							<li><a class="white-text"> Everton Wesley Da Silva <br>everton.wesley777@gmail.com
+									<br> +55 (84) 99815-2853
+							</a>
+						</ul>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<style>
+.titulodois {
+	text-align: center;
+}
+
+.um {
+	font-family: Gill Sans;
+	font-size: 150%;
+}
+
+.dois {
+	font-family: Gill Sans;
+	font-size: 150%;
+}
+
+.tres {
+	font-family: Gill Sans;
+	font-size: 150%;
+}
+
+.quatro {
+	font-family: Gill Sans;
+	font-size: 150%;
+}
+
+.cinco {
+	font-family: Gill Sans;
+	font-size: 150%;
+}
+
+.one {
+	font-family: Times New Roman;
+}
+
+.two {
+	font-family: Times New Roman;
+}
+
+.three {
+	font-family: Times New Roman;
+}
+
+.for {
+	font-family: Times New Roman;
+}
+
+.five {
+	font-family: Times New Roman;
+}
+
+.brand-logo {
+	font-family: monospace;
+}
+
+.nome {
+	font-family: garamond;
+	text-decoration: underline;
+	font-size: large;
+}
+</style>
+</body>
+</html>
+
