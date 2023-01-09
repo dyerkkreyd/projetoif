@@ -15,7 +15,7 @@ public class Paciente {
 	private String nome;
 	private String cpf;
 	private String hora;
-	private String prioridade;
+	private Boolean prioridade;
 
 	@ManyToOne
 	private Projeto projeto;
@@ -58,11 +58,11 @@ public class Paciente {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	public String getPrioridade() {
+	public Boolean getPrioridade() {
 		return prioridade;
 	}
 
-	public void setPrioridade(String prioridade) {
+	public void setPrioridade(Boolean prioridade) {
 		this.prioridade = prioridade;
 	}
 	@Override

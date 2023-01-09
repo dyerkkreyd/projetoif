@@ -131,13 +131,13 @@ public class ProjetosController {
 		return md;
 	}
 	@GetMapping("/{idConsulta}/pacientes/{idPaciente}/remover")
-	public String apagarPaciente(@PathVariable Long idConsulta, @PathVariable Long IdPaciente) {
-		Optional<Paciente> opt = pcr.findById(IdPaciente);
+	public String apagarPaciente(@PathVariable Long idConsulta, @PathVariable Long idPaciente) {
+		Optional<Paciente> opt = pcr.findById(idPaciente);
 		if(!opt.isEmpty()) {
 			Paciente paciente = opt.get();
 			pcr.delete(paciente);
 			}
-		return "redirect:/projeto{idConsulta}";
+		return "redirect:/projetos/" + idConsulta;
 		
 		
 	}

@@ -37,7 +37,7 @@
 						</div>
 						<div class="auauau">
 						<label>
-						<input type="checkbox" name="prioridade" th:value="${paciente.prioridade}">
+						<input type="checkbox" name="prioridade" th:checked="${paciente.prioridade}">
 						<span class="auau">prioridade</span>
 						<span>(Pessoas portadoras de algum tipo de deficiência, Gestantes ou idosos +60 anos)</span>
 						</label>
@@ -98,7 +98,7 @@
 								<td th:text="${c.nome}">1</td>
 								<td th:text="${c.cpf}">1</td>
 									<td th:text="${c.hora}">1</td>
-									<td th:text="${c.prioridade}">1</td>
+									<td th:text="${c.prioridade} ? 'sim' : 'não'">1</td>
 								<td> 
 									<a
 									th:href="@{/projetos/{idProjeto}/pacientes/{idPaciente}/remover(idProjeto=${projeto.id},idPaciente=${c.id})}"><i
