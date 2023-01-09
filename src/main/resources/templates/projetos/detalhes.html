@@ -35,6 +35,13 @@
 						<div>
 							<label>Hórario: </label> <input type="time" name="hora" th:value="${paciente.hora}">
 						</div>
+						<div class="auauau">
+						<label>
+						<input type="checkbox" name="prioridade" th:value="${paciente.prioridade}">
+						<span class="auau">prioridade</span>
+						<span>(Pessoas portadoras de algum tipo de deficiência, Gestantes ou idosos +60 anos)</span>
+						</label>
+						</div>
 						<div>
 							<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
 							<button class="btn waves-effect waves-light" type="reset">Limpar</button>
@@ -80,6 +87,7 @@
 								<th>Nome</th>
 								<th>Cpf</th>
 								<th>Horário</th>
+								<th>Prioridade</th>
 								<th></th>
 								
 							</tr>
@@ -90,6 +98,7 @@
 								<td th:text="${c.nome}">1</td>
 								<td th:text="${c.cpf}">1</td>
 									<td th:text="${c.hora}">1</td>
+									<td th:text="${c.prioridade}">1</td>
 								<td> 
 									<a
 									th:href="@{/projetos/{idProjeto}/pacientes/{idPaciente}/remover(idProjeto=${projeto.id},idPaciente=${c.id})}"><i
@@ -201,6 +210,14 @@
 
 .brand-logo {
 	font-family: monospace;
+}
+.auau{
+font-weight: bold;
+font-family: serif;
+text-align: center;
+}
+.auauau{
+text-align: center;
 }
 </style>
 </body>

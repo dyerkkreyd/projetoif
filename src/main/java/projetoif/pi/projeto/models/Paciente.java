@@ -15,6 +15,7 @@ public class Paciente {
 	private String nome;
 	private String cpf;
 	private String hora;
+	private String prioridade;
 
 	@ManyToOne
 	private Projeto projeto;
@@ -57,9 +58,16 @@ public class Paciente {
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
+	public String getPrioridade() {
+		return prioridade;
+	}
+
+	public void setPrioridade(String prioridade) {
+		this.prioridade = prioridade;
+	}
 	@Override
 	public String toString() {
-		return "Paciente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", projeto=" + projeto + ", hora=" + hora +"]";
+		return "Paciente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", projeto=" + projeto + ", hora=" + hora +", prioridade=" + prioridade +"]";
 	}
 }
 

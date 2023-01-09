@@ -7,7 +7,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <title>Cliníca Odontológica</title>
 </head>
-<body>
+<body class="corpo">
 	<nav>
 		<div class="nav-wrapper cyan">
 			<a href="/projetos/form" class="brand-logo center">Adicionar
@@ -16,16 +16,16 @@
 			</ul>
 		</div>
 	</nav>
-	<form action="/projetos" method="post" class="col s12">
-		<div class="row">
+	<form action="/projetos" method="post" class="cols12">
+		<div class="tudo">
 			<div class="row">
 
 				<input type="hidden" name="id" class="validate"th:value="${projeto.id}" readonly="readonly">
 
-				<div class="input-field col s12">
+				<div class="input-field cols12">
 
 					<div class="input-field col s12">
-						<input type="text" name="nome" class="validate"
+						<input type="text" name="nome" class="primeiro"
 							th:value="${projeto.nome}"> <label for="nome">Nome</label>
 						<span class="helper-text" data-error="Inválido"
 							data-success="Correto">Insira o seu nome completo</span>
@@ -34,7 +34,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input type="text" name="servico" class="validate"
+					<input type="text" name="servico" class="segundo"
 						th:value="${projeto.servico}"> <label for="servico">Serviço</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira o serviço que deseja. ex:
@@ -43,7 +43,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input type="date" name="data" class="validate"
+					<input type="date" name="data" class="terceiro"
 						th:value="${projeto.data}"> <label for="data">Data</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira a data que você deseja
@@ -53,7 +53,7 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input type="text" name="horario" class="validate"
+					<input type="text" name="horario" class="quarto"
 						th:value="${projeto.horario}"> <label for="horario">Horário</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira o horário que você deseja
@@ -62,7 +62,7 @@
 
 			</div>
 
-			<div>
+			<div class="botoes">
 				<button class="btn waves-effect waves-light" type="submit">Adicionar</button>
 				<button class="btn waves-effect waves-light" type="reset">Limpar</button>
 			</div>
@@ -73,5 +73,22 @@
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+		<style>
+.primeiro{
+display: block;
+}
+.segundo{
+display: block;
+}
+.terceiro{
+display: block;
+}
+.quarto{
+display: block;
+}
+.botoes{
+text-align: center;
+}
+</style>
 </body>
 </html>
