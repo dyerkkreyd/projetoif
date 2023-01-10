@@ -15,8 +15,10 @@
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
 			</ul>
 		</div>
+		<p th:if="${mensagem}" th:text="${mensagem}"></p>
+		
 	</nav>
-	<form action="/projetos" method="post" class="cols12">
+	<form action="/projetos" method="post" class="cols12" th:object="${projeto}">
 		<div class="tudo">
 			<div class="row">
 
@@ -26,38 +28,42 @@
 
 					<div class="input-field col s12">
 						<input type="text" name="nome" class="primeiro"
-							th:value="${projeto.nome}"> <label for="nome">Nome</label>
+							th:field="*{nome}"> <label for="nome">Nome</label>
 						<span class="helper-text" data-error="Inválido"
 							data-success="Correto">Insira o seu nome completo</span>
+							<p th:errors="*{nome}"></p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<input type="text" name="servico" class="segundo"
-						th:value="${projeto.servico}"> <label for="servico">Serviço</label>
+						th:field="*{servico}"> <label for="servico">Serviço</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira o serviço que deseja. ex:
 						Manutenção, Extração, Limpeza</span>
+						<p th:errors="*{servico}"></p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<input type="date" name="data" class="terceiro"
-						th:value="${projeto.data}"> <label for="data">Data</label>
+						th:field="*{data}"> <label for="data">Data</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira a data que você deseja
 						realizar seu serviço.</span>
+						<p th:errors="*{data}"></p>
 				</div>
 
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
-					<input type="text" name="horario" class="quarto"
-						th:value="${projeto.horario}"> <label for="horario">Horário</label>
+					<input type="time" name="horario" class="quarto"
+						th:field="*{horario}"> <label for="horario">Horário</label>
 					<span class="helper-text" data-error="Inválido"
 						data-success="Correto">Insira o horário que você deseja
 						realizar seu serviço</span>
+						<p th:errors="*{horario}"></p>
 				</div>
 
 			</div>

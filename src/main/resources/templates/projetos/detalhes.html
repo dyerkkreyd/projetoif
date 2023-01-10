@@ -16,28 +16,33 @@
 			</ul>
 		</div>
 	</nav>
+	
+	<p th:if="${mensagem}" th:text="${mensagem}"></p>
 
 	<div class="row">
 		<div class="col s12">
 			<div class="card">
 				<div class="card-content">
 					<span class="card-title">Adicionar Paciente</span>
-					<form th:action="@{/projetos/{idConsulta}(idConsulta=${projeto.id})}" method="post">
+					<form th:action="@{/projetos/{idConsulta}(idConsulta=${projeto.id})}" method="post" th:object="${paciente}">
 						<div>
-							<input type="hidden" name="id" th:value="${paciente.id}" readonly="readonly">
+							<input type="hidden" th:field="*{id}" readonly="readonly">
 						</div>
 						<div>
-							<label>Nome: </label> <input type="text" name="nome" th:value="${paciente.nome}">
+							<label>Nome: </label> <input type="text" th:field="*{nome}" >
+							<p th:errors="*{nome}"></p>
 						</div>
 						<div>
-							<label>CPF: </label> <input type="text" name="cpf" th:value="${paciente.cpf}">
+							<label>CPF: </label> <input type="text" th:field="*{cpf}" >
+							<p th:errors="*{cpf}"></p>
 						</div>
 						<div>
-							<label>Hórario: </label> <input type="time" name="hora" th:value="${paciente.hora}">
+							<label>Hórario: </label> <input type="time" th:field="*{hora}" >
+							<p th:errors="*{hora}"></p>
 						</div>
 						<div class="auauau">
 						<label>
-						<input type="checkbox" name="prioridade" th:checked="${paciente.prioridade}">
+						<input type="checkbox" th:field="*{prioridade}" >
 						<span class="auau">prioridade</span>
 						<span>(Pessoas portadoras de algum tipo de deficiência, Gestantes ou idosos +60 anos)</span>
 						</label>

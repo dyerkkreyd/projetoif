@@ -21,6 +21,9 @@
 	</nav>
 
 	<div>
+	
+			<p th:if="${mensagem}" th:text="${mensagem}"></p>
+			
 
 		<table class="highlight">
 
@@ -41,7 +44,7 @@
 					<a class="nome" th:href="@{/projetos/{id}(id=${p.id})}"><span
 							th:text="${p.nome}">Fernando</span></a> </b></td>
 					<td class="three" th:text="${p.servico}">Extração</td>
-					<td class="for" th:text="${p.data}">26/12/2022</td>
+					<td class="for" th:text="${#temporals.format(p.data, 'dd/MM/yyyy')}">26/12/2022</td>
 					<td class="five" th:text="${p.horario}">16:00</td>
 					<td><a th:href="@{/projetos/{id}/selecionar(id=${p.id})}"><i
 							class="material-icons">assignment</i></a> <a

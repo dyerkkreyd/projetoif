@@ -3,13 +3,17 @@ package projetoif.pi.projeto.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import projetoif.pi.projeto.models.Paciente;
 import projetoif.pi.projeto.models.Projeto;
@@ -31,10 +35,14 @@ public class ProjetosController {
 	}
 
 	@PostMapping
-	public String adicionar(Projeto projeto) {
-
+	public String adicionar(@Valid Projeto projeto, BindingResult result, RedirectAttributes attributes) {
+		
+		if(result.hasErrors()) {
+			return form(projeto);
+	}
 		System.out.println(projeto);
 		pr.save(projeto);
+		attributes.addFlashAttribute("mensagem", "Projeto adicionado com sucesso!");
 
 		return "redirect:/projetos";
 
@@ -63,13 +71,18 @@ public class ProjetosController {
 		md.addObject("projeto", projeto);
 		md.addObject("pacientes", pcr.findAllByProjeto(projeto));
 		System.out.println(pcr.findAllByProjeto(projeto));
-		
+
 		return md;
 	}
 
 	@PostMapping("/{idConsulta}")
-	public String salvarPaciente(@PathVariable Long idConsulta, Paciente paciente) {
+	public String salvarPaciente(@Valid @PathVariable Long idConsulta, Paciente paciente, BindingResult result, RedirectAttributes attributes) {
 
+		if(result.hasErrors()) {
+			return "redirect:/projetos/idConsulta";
+	}
+		
+		
 		Optional<Projeto> opt = pr.findById(idConsulta);
 		if (opt.isEmpty()) {
 			return "redirect:/projetos";
@@ -79,6 +92,8 @@ public class ProjetosController {
 		paciente.setProjeto(projeto);
 
 		pcr.save(paciente);
+		attributes.addFlashAttribute("mensagem", "Paciente adicionado com sucesso!");
+		
 
 		return "redirect:/projetos/{idConsulta}";
 
@@ -95,16 +110,19 @@ public class ProjetosController {
 		Projeto projeto = opt.get();
 		md.setViewName("projetos/formProjeto");
 		md.addObject("projeto", projeto);
-		
+
 		return md;
 	}
 
 	@GetMapping("/{id}/remover")
-	public String apagarconsulta(@PathVariable Long id) {
+	public String apagarconsulta(@PathVariable Long id, RedirectAttributes attributes) {
 		Optional<Projeto> opt = pr.findById(id);
 		if (!opt.isEmpty()) {
+
+			Optional<Paciente> optPacientes = pcr.findById(id);
 			Projeto projeto = opt.get();
 			pr.delete(projeto);
+			attributes.addFlashAttribute("mensagem", "Projeto " + projeto.getNome() + "removido com sucesso!");
 		}
 		return "redirect:/projetos";
 	}
@@ -130,16 +148,17 @@ public class ProjetosController {
 		}
 		return md;
 	}
+
 	@GetMapping("/{idConsulta}/pacientes/{idPaciente}/remover")
-	public String apagarPaciente(@PathVariable Long idConsulta, @PathVariable Long idPaciente) {
+	public String apagarPaciente(@PathVariable Long idConsulta, @PathVariable Long idPaciente, RedirectAttributes attributes) {
 		Optional<Paciente> opt = pcr.findById(idPaciente);
-		if(!opt.isEmpty()) {
+		if (!opt.isEmpty()) {
 			Paciente paciente = opt.get();
 			pcr.delete(paciente);
-			}
+			attributes.addFlashAttribute("mensagem", "Paciente " + paciente.getNome() + "removido com sucesso!");
+
+		}
 		return "redirect:/projetos/" + idConsulta;
-		
-		
+
 	}
 }
-
